@@ -41,5 +41,17 @@ avgreward=np.average(rewardarray,axis=0)
 x=np.linspace(0,1000,1000)
 t=[]
 t.append((x,avgreward,'greedy'))
-plot_lines(t, 'plot', 'x','y')
+plot_lines(t, 'Average Rewards', 'x','y')
+
+countarray=np.zeros((runs,steps))
+for run in range(runs):
+    opt_action = np.argmax(qstar[run])
+    for step in range(steps):
+        countarray[run][step]=int(opt_action==rewardlist[run][step][0])
+opt_action_pc = np.sum(countarray,axis=0)/len(rewardlist)
+
+x=np.linspace(0,1000,1000)
+t=[]
+t.append((x,opt_action_pc,'greedy'))
+plot_lines(t, 'Optimal Action %', 'x','y')
 
