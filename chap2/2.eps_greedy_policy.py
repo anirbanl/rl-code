@@ -57,7 +57,7 @@ def count_optimal_action_selection(rewardlist, runs=2000, steps=1000):
     opt_action_pc = np.sum(countarray, axis=0) / len(rewardlist)
     return opt_action_pc
 
-def iterate_eps_greedy(qstar, epslist, runs=2000, steps=1000, k=10, plot=0):
+def iterate_eps_greedy(qstar, epslist, runs=2000, steps=1000, k=10):
     eps_run_list = []
     for eps in epslist:
         r = run_eps_greedy(qstar, runs, steps, eps, k)
